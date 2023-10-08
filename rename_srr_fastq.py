@@ -10,8 +10,15 @@ def rename_files_based_on_tsv(tsv_file, fastq_dir):
     mapping = df.set_index("run_accession")[["study_alias", "experiment_alias"]].to_dict(orient="index")
 
     def get_new_filename(filename):
-        # Extract run_accession from the filename
-        run_accession = filename.split("_")[0]
+        # # Extract run_accession from the filename
+        # run_accession = filename.split("_")[0]
+
+        # Use regex to extract run_accession from the filename
+        match = re.search(r"SRR\d+", filename)
+        if not match:
+            raise ValueError(f"Cannot find run_accession in {filename}")
+    
+        run_accession = match.group()
         study_alias = mapping[run_accession]["study_alias"]
         experiment_alias = mapping[run_accession]["experiment_alias"]
         return f"{study_alias}_{experiment_alias}_{filename}"
