@@ -80,12 +80,3 @@ if __name__ == "__main__":
 
 
 
-# Example usage
-# config = AsperaConfig(id_dsa_file="/projects/r_workspace/wangh5_py/.conda_env/kingfisher/etc/asperaweb_id_dsa.openssh")
-# ena_tsv_file = Path("path/to/your/tsv/file.tsv")
-# gsm_file_list = ["GSM4735747", "GSM3901130"]  # Example GSM list
-
-# downloader = AsperaDownloader(ena_tsv_file, config)
-# downloader.filter_data(gsm_file_list)
-# downloader.download(dry_run=True)  # Dry run to show commands
-# downloader.download()  # Actual download with progress bar
